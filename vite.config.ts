@@ -4,23 +4,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          tesseract: ['tesseract.js'],
-          zxing: ['@zxing/browser', '@zxing/library']
+          zxing: ['@zxing/browser', '@zxing/library'],
+          ocr: ['tesseract.js']
         }
       }
     }
-  },
-  server: {
-    port: 5173,
-    hmr: true,
-    cors: false,
-    host: 'localhost',
-    strictPort: true,
-    origin: 'http://localhost:5173'
   }
 });
